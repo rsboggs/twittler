@@ -1,0 +1,25 @@
+/* Resets */
+
+* {
+	margin: 0;
+}
+
+/* Header & Footer */
+
+header, footer {
+	background-color: #55acee;
+	color: #ffffff;
+	width: 100%;
+}
+
+header h1 {
+	padding: 10px 0 10px 20px;
+	font-size: 48px;
+	font-family: 'Lato', sans-serif;
+}
+
+footer {
+	padding: 10px 0;
+	font-family: 'Merriweather', serif;
+	text-align: center;
+}
