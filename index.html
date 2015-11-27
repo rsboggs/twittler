@@ -26,14 +26,15 @@
     </div><!-- .wrapper -->
     <script>
 
-      $(document).ready(function(){
-        var $content = $('.content');
-        $content.html('');
-
-        function showTweets(user) {
+      function showTweets(user) {
+          var $content = $('.content');
+          $content.html('');
           if (user === undefined) {
             var stream = streams.home;
+            $('.user_selected').text("All Users");
           } else {
+            $('.user_selected').text(user);
+            var user = user.slice(1);
             var stream = streams.users[user];
           }
           var index = stream.length - 1;
@@ -46,11 +47,23 @@
             $tweet.appendTo($content);
             index -= 1;
           }
+          var height = $('.content').height() - 20;
+          $('aside').height(height);
         }
+
+      $(window).load(function(){
+
         showTweets();
 
-        var height = $('.content').height();
-        $('aside').height(height);
+        $(document).on('click', '.user', function() {
+          var username = $(this).text();
+          showTweets(username);
+        });
+
+        $('header').on('click','h1', function() {
+          showTweets();
+        });
+
       });
 
     </script>

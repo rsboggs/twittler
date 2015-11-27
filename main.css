@@ -88,3 +88,12 @@ aside {
 	margin: 8px;
 	color: #696969;
 }
+.user:hover {
+	color: #87CEEB;
+	cursor: pointer;
+}
+
+h1:hover {
+	color: #0000b3;
+	cursor: pointer;
+}
