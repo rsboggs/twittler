@@ -12,9 +12,14 @@
       <header>
         <h1>Twittler</h1>
       </header>
-      <section class="content">
-
-      </section>
+      <div class="main">
+        <aside>
+          Current View:<br />
+          <span class="user_selected">All Users</span>
+        </aside>
+        <section class="content">
+        </section>
+      </div><!-- .main -->
       <footer>
       Robert Boggs for Hack Reactor | Twitter Clone with jQuery
       </footer>
@@ -36,6 +41,8 @@
           index -= 1;
         }
 
+        var height = $('.content').height();
+        $('aside').height(height);
       });
 
     </script>
