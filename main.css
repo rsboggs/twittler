@@ -42,7 +42,7 @@ article {
 	font-size: 14px;
 	border: 1px solid #e1e8ed;
 	border-radius: 6px;
-	padding: 5px 0 5px 10px;
+	padding: 5px 10px;
 	margin: 5px 10px;
 	background-color: #fff;
 }
@@ -58,4 +58,9 @@ article span {
 
 .message {
 	font-size: 16px;
+}
+
+.time {
+	float: right;
+	color: #696969;
 }
