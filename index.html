@@ -28,8 +28,9 @@
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<article></article>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          var $tweet =  $('<article><span class="user">' +'@' + tweet.user
+            + '</span><br /><span class="message">' + tweet.message
+            + '</span></article>');
           $tweet.appendTo($content);
           index -= 1;
         }
