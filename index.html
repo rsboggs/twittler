@@ -30,16 +30,24 @@
         var $content = $('.content');
         $content.html('');
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet =  $('<article><span class="user">' +'@' + tweet.user
-            + '</span><span class="time">' + tweet.created_at
-            + '</span><br /><span class="message">' + tweet.message
-            + '</span></article>');
-          $tweet.appendTo($content);
-          index -= 1;
+        function showTweets(user) {
+          if (user === undefined) {
+            var stream = streams.home;
+          } else {
+            var stream = streams.users[user];
+          }
+          var index = stream.length - 1;
+          while(index >= 0){
+            var tweet = stream[index];
+            var $tweet =  $('<article><span class="user">' +'@' + tweet.user
+              + '</span><span class="time">' + tweet.created_at
+              + '</span><br /><span class="message">' + tweet.message
+              + '</span></article>');
+            $tweet.appendTo($content);
+            index -= 1;
+          }
         }
+        showTweets();
 
         var height = $('.content').height();
         $('aside').height(height);
