@@ -113,3 +113,24 @@ h1:hover {
 	color: #87CEEB;
 	cursor: pointer;
 }
+
+/* Buttons */
+.button-wrapper {
+	position: relative;
+}
+
+.button {
+	position: absolute;
+	top: 5px;
+	right: 350px;
+	padding: 5px 10px;
+	background-color: #55acee;
+	border: 1px solid #e1e8ed;
+	font-weight: 700;
+	color: #FFF;
+	border-radius: 4px;
+}
+
+.button:hover {
+	color: #0000b3;
+}
