@@ -97,3 +97,19 @@ h1:hover {
 	color: #0000b3;
 	cursor: pointer;
 }
+
+/* Links */
+
+#top_link {
+	font-family: 'Merriweather', serif;
+	text-decoration: none;
+	text-align: center;
+	display: block;
+	color: #000;
+	font-size: 16px;
+	margin: 5px 0;
+}
+#top_link:hover {
+	color: #87CEEB;
+	cursor: pointer;
+}
