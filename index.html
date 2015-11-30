@@ -30,26 +30,28 @@
     </div><!-- .wrapper -->
     <script>
 
+      var username = "All Users";
       function showTweets(user) {
           var $content = $('.content');
           $content.html('');
           if (user === undefined) {
             var stream = streams.home;
-            $('.user_selected').text("All Users");
+            username = "All Users";
+            $('.user_selected').text(username);
           } else {
             $('.user_selected').text(user);
             var user = user.slice(1);
             var stream = streams.users[user];
           }
-          var index = stream.length - 1;
-          while(index >= 0){
+          var index = 0;
+          while(index < stream.length) {
             var tweet = stream[index];
             var $tweet =  $('<article><span class="user">' +'@' + tweet.user
               + '</span><span class="time">' + tweet.created_at
               + '</span><br /><span class="message">' + tweet.message
               + '</span></article>');
-            $tweet.appendTo($content);
-            index -= 1;
+            $tweet.prependTo($content);
+            index++;
           }
           var height = $('.content').height() - 20;
           $('aside').height(height);
@@ -60,12 +62,20 @@
         showTweets();
 
         $(document).on('click', '.user', function() {
-          var username = $(this).text();
+          username = $(this).text();
           showTweets(username);
         });
 
         $('header').on('click','h1', function() {
           showTweets();
+        });
+
+        $('.button').on('click', function() {
+          if (username[0] !== "@") {
+            showTweets();
+          } else {
+            showTweets(username);
+          }
         });
 
       });
