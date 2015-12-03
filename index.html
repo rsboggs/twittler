@@ -33,9 +33,8 @@
       var currentUser = "All Users";
       var index = 0;
 
-      function showTweets(user) {
+      var showTweets = function(user) {
         var $content = $('.content');
-        $content.html('');
 
         if (user === undefined) {
           user = "All Users";
@@ -44,26 +43,38 @@
         if (user !== currentUser) {
           currentUser = user;
           index = 0;
+          $content.html('');
           $('.user_selected').text(currentUser);
         }
 
         var stream = (user === "All Users") ? streams.home : streams.users[user.slice(1)];
 
-          var idx = 0;
-          while(idx < stream.length) {
-            var tweet = stream[idx];
-            var $tweet =  $('<article><span class="user">' +'@' + tweet.user
-              + '</span><span class="time">' + tweet.created_at
-              + '</span><br /><span class="message">' + tweet.message
-              + '</span></article>');
-            $tweet.prependTo($content);
-            idx++;
-          }
-
-          // Set height of aside element to match content on page
-          var height = $('.content').height() - 20;
-          $('aside').height(height);
+        while(index < stream.length) {
+          var tweet = stream[index];
+          var $tweet =  $('<article><span class="user">' +'@' + tweet.user
+            + '</span><span class="time">' + tweet.created_at
+            + '</span><br /><span class="message">' + tweet.message
+            + '</span></article>');
+          $tweet.prependTo($content);
+          index++;
         }
+
+        // Set height of aside element to match content on page
+        var height = $('.content').height() - 20;
+        $('aside').height(height);
+
+        $('.button').hide();
+
+        var checkStatus = function() {
+          if (index < stream.length) {
+            $('.button').slideDown();
+          } else {
+            setTimeout(checkStatus, 3000);
+          }
+        }
+
+        checkStatus();
+      }
 
       // Event handling
       $(window).load(function(){
