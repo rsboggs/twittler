@@ -30,40 +30,49 @@
     </div><!-- .wrapper -->
     <script>
 
-      var username = "All Users";
+      var currentUser = "All Users";
+      var index = 0;
+
       function showTweets(user) {
-          var $content = $('.content');
-          $content.html('');
-          if (user === undefined) {
-            var stream = streams.home;
-            username = "All Users";
-            $('.user_selected').text(username);
-          } else {
-            $('.user_selected').text(user);
-            var user = user.slice(1);
-            var stream = streams.users[user];
-          }
-          var index = 0;
-          while(index < stream.length) {
-            var tweet = stream[index];
+        var $content = $('.content');
+        $content.html('');
+
+        if (user === undefined) {
+          user = "All Users";
+        }
+
+        if (user !== currentUser) {
+          currentUser = user;
+          index = 0;
+          $('.user_selected').text(currentUser);
+        }
+
+        var stream = (user === "All Users") ? streams.home : streams.users[user.slice(1)];
+
+          var idx = 0;
+          while(idx < stream.length) {
+            var tweet = stream[idx];
             var $tweet =  $('<article><span class="user">' +'@' + tweet.user
               + '</span><span class="time">' + tweet.created_at
               + '</span><br /><span class="message">' + tweet.message
               + '</span></article>');
             $tweet.prependTo($content);
-            index++;
+            idx++;
           }
+
+          // Set height of aside element to match content on page
           var height = $('.content').height() - 20;
           $('aside').height(height);
         }
 
+      // Event handling
       $(window).load(function(){
 
         showTweets();
 
         $(document).on('click', '.user', function() {
-          username = $(this).text();
-          showTweets(username);
+          var clickedUser = $(this).text();
+          showTweets(clickedUser);
         });
 
         $('header').on('click','h1', function() {
@@ -71,10 +80,10 @@
         });
 
         $('.button').on('click', function() {
-          if (username[0] !== "@") {
+          if (currentUser === "All Users") {
             showTweets();
           } else {
-            showTweets(username);
+            showTweets(currentUser);
           }
         });
 
