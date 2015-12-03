@@ -31,6 +31,7 @@
     <script>
 
       var currentUser = "All Users";
+      var stream = streams.home;
       var index = 0;
 
       var showTweets = function(user) {
@@ -45,9 +46,8 @@
           index = 0;
           $content.html('');
           $('.user_selected').text(currentUser);
+          stream = (user === "All Users") ? streams.home : streams.users[user.slice(1)];
         }
-
-        var stream = (user === "All Users") ? streams.home : streams.users[user.slice(1)];
 
         while(index < stream.length) {
           var tweet = stream[index];
