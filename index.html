@@ -20,10 +20,20 @@
           <span class="user_selected">All Users</span>
         </aside>
         <div class="button-wrapper">
-          <button class="button">SHOW NEW TWEETS</button>
+          <button class="refresh-button">SHOW NEW TWEETS</button>
         </div>
-        <section class="content">
-        </section>
+        <div class='tweet-section'>
+          <section class="newTweets">
+            <article class="form">
+              <form>
+                <input type="text" placeholder="What's going on?" />
+                <button>Tweet</button>
+              </form>
+            </article>
+          </section>
+          <section class="content">
+          </section>
+        </div><!-- .tweet-section -->
       </div><!-- .main -->
       <a href="#top" id="top_link">Top</a>
       <footer>
@@ -62,14 +72,14 @@
         }
 
         // Set height of aside element to match content on page
-        var height = $('.content').height() - 20;
+        var height = $('.tweet-section').height() - 20;
         $('aside').height(height);
 
-        $('.button').hide();
+        $('.refresh-button').hide();
 
         var checkStatus = function() {
           if (index < stream.length) {
-            $('.button').slideDown();
+            $('.refresh-button').slideDown();
           } else {
             setTimeout(checkStatus, 3000);
           }
@@ -92,7 +102,7 @@
           showTweets();
         });
 
-        $('.button').on('click', function() {
+        $('.refresh-button').on('click', function() {
           if (currentUser === "All Users") {
             showTweets();
           } else {
