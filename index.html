@@ -6,6 +6,8 @@
     <link href='https://fonts.googleapis.com/css?family=Lato|Merriweather' rel='stylesheet' type='text/css'>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <script src="moment.js"></script>
+    <script src="livestamp.js"></script>
   </head>
   <body>
     <div class="wrapper" id="top">
@@ -52,7 +54,7 @@
         while(index < stream.length) {
           var tweet = stream[index];
           var $tweet =  $('<article><span class="user">' +'@' + tweet.user
-            + '</span><span class="time">' + tweet.created_at
+            + '</span><span class="time" data-livestamp="' + tweet.created_at.toISOString() + '">'
             + '</span><br /><span class="message">' + tweet.message
             + '</span></article>');
           $tweet.prependTo($content);
