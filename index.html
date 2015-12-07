@@ -25,9 +25,10 @@
         <div class='tweet-section'>
           <section class="newTweets">
             <article class="form">
-              <form>
-                <input type="text" placeholder="What's going on?" />
-                <button>Tweet</button>
+              <form autocomplete="off">
+                <input type="text" placeholder="What's going on?"
+                  name="message" value="" />
+                <button class="new-tweet">Tweet</button>
               </form>
             </article>
           </section>
@@ -45,6 +46,7 @@
       var currentUser = "All Users";
       var stream = streams.home;
       var index = 0;
+      var visitor = "guest";
 
       var showTweets = function(user) {
         var $content = $('.content');
@@ -88,6 +90,14 @@
         checkStatus();
       }
 
+      var newTweets = function() {
+        var message = $("input[name=message]").val();
+        streams.users[visitor] = streams.users[visitor] || [];
+        writeTweet(message);
+        showTweets();
+        $("input[name=message]").val("");
+      };
+
       // Event handling
       $(window).load(function(){
 
@@ -108,6 +118,11 @@
           } else {
             showTweets(currentUser);
           }
+        });
+
+        $('.new-tweet').on('click', function() {
+          event.preventDefault();
+          newTweets();
         });
 
       });
