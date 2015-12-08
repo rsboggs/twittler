@@ -100,7 +100,7 @@ h1:hover {
 
 /* Links */
 
-#top_link {
+#top-link {
 	font-family: 'Merriweather', serif;
 	text-decoration: none;
 	text-align: center;
@@ -109,7 +109,7 @@ h1:hover {
 	font-size: 16px;
 	margin: 5px 0;
 }
-#top_link:hover {
+#top-link:hover {
 	color: #87CEEB;
 	cursor: pointer;
 }
@@ -155,7 +155,7 @@ input {
 	border-radius: 5px;
 }
 
-.newTweets button {
+.new-tweets button {
 	font-weight: 700;
 	font-size: 16px;
 	color: #FFF;
@@ -167,7 +167,7 @@ input {
 	width: 100px;
 }
 
-.newTweets button:hover {
+.new-tweets button:hover {
 	cursor: pointer;
 }
 
